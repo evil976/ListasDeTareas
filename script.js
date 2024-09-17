@@ -2,8 +2,13 @@
 const taskInput = document.getElementById("taskInput");
 const addTaskButton = document.getElementById("addTaskButton");
 const taskList = document.getElementById("taskList");
-const prioritySelect = document.getElementById("priority"); // Asegúrate de que tienes un elemento select para la prioridad
-const loadingSpinner = document.getElementById("loadingSpinner"); // Icono de carga
+const prioritySelect = document.getElementById("priority");
+const loadingSpinner = document.getElementById("loadingSpinner");
+const passwordDialog = document.getElementById("passwordDialog");
+const passwordInput = document.getElementById("passwordInput");
+const confirmPasswordButton = document.getElementById("confirmPasswordButton");
+const cancelPasswordButton = document.getElementById("cancelPasswordButton");
+const passwordError = document.getElementById("passwordError");
 
 // Mapa para asignar colores a las prioridades
 const priorityColors = new Map([
@@ -11,6 +16,9 @@ const priorityColors = new Map([
     ["media", "orange"],
     ["baja", "green"]
 ]);
+
+// Contraseña para eliminar tareas
+const correctPassword = "1234"; // Cambia esta contraseña según tus necesidades
 
 // Función para agregar una tarea con prioridad
 function addTaskWithDelay(taskText) {
@@ -56,8 +64,10 @@ function addTask(taskText, priority = prioritySelect.value) {
 
     // Añadir evento al botón de eliminar
     deleteButton.addEventListener("click", function() {
-        taskList.removeChild(taskItem);
-        saveTasks(); // Guardar cambios en localStorage
+        showPasswordDialog(() => {
+            taskList.removeChild(taskItem);
+            saveTasks(); // Guardar cambios en localStorage
+        }); // Mostrar el cuadro de diálogo para ingresar la contraseña
     });
 
     // Añadir evento de clic para marcar la tarea como completada
@@ -120,6 +130,33 @@ function loadTasks() {
     });
 }
 
+// Función para mostrar el cuadro de diálogo para ingresar la contraseña
+function showPasswordDialog(callback) {
+    passwordDialog.style.display = "block";
+
+    // Manejar el clic en el botón de confirmar
+    confirmPasswordButton.addEventListener("click", function() {
+        const enteredPassword = passwordInput.value;
+        if (enteredPassword === correctPassword) {
+            // Ejecutar la función de callback y ocultar el cuadro de diálogo
+            callback();
+            passwordDialog.style.display = "none";
+            passwordInput.value = "";
+            passwordError.style.display = "none";
+        } else {
+            // Mostrar mensaje de error
+            passwordError.style.display = "block";
+        }
+    });
+
+    // Manejar el clic en el botón de cancelar
+    cancelPasswordButton.addEventListener("click", function() {
+        passwordDialog.style.display = "none";
+        passwordInput.value = "";
+        passwordError.style.display = "none";
+    });
+}
+
 // Evento para añadir una nueva tarea cuando se hace clic en el botón
 addTaskButton.addEventListener("click", function() {
     const taskText = taskInput.value;
@@ -128,8 +165,10 @@ addTaskButton.addEventListener("click", function() {
 
 // Evento para eliminar todas las tareas
 document.getElementById("clearAllButton").addEventListener("click", function() {
-    taskList.innerHTML = "";
-    saveTasks(); // Guardar cambios en localStorage
+    showPasswordDialog(() => {
+        taskList.innerHTML = "";
+        saveTasks(); // Guardar cambios en localStorage
+    }); // Mostrar el cuadro de diálogo para ingresar la contraseña
 });
 
 // Cargar tareas al iniciar

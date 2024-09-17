@@ -5,6 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Tareas</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos para el cuadro de diálogo de contraseña */
+        .password-dialog {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            text-align: center;
+        }
+
+        .password-dialog input {
+            margin-bottom: 10px;
+            padding: 8px;
+            width: 80%;
+        }
+
+        .password-dialog button {
+            margin: 5px;
+            padding: 8px 12px;
+        }
+
+        .password-dialog p {
+            color: red;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -24,6 +54,15 @@
             <!-- Aquí van las tareas -->
         </ul>
         <button id="logoutButton">Cerrar sesión</button>
+
+        <!-- Cuadro de diálogo para ingresar contraseña -->
+        <div id="passwordDialog" class="password-dialog" style="display: none;">
+            <h3>Ingrese la contraseña para eliminar la tarea</h3>
+            <input type="password" id="passwordInput" placeholder="Contraseña">
+            <button id="confirmPasswordButton">Confirmar</button>
+            <button id="cancelPasswordButton">Cancelar</button>
+            <p id="passwordError" style="color: red; display: none;">Contraseña incorrecta</p>
+        </div>
 
         <!-- Icono de carga -->
         <div id="loadingSpinner" class="loading-spinner" style="display: none;">
