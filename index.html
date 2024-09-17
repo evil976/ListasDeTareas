@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Tareas</h1>
+        <div class="input-container">
+            <input type="text" id="taskInput" placeholder="Nueva tarea...">
+            <button id="addTaskButton">Agregar tarea</button>
+        </div>
+        <label for="priority">Prioridad:</label>
+        <select id="priority">
+            <option value="alta">Alta</option>
+            <option value="media">Media</option>
+            <option value="baja">Baja</option>
+        </select>
+        <button id="clearAllButton">Eliminar todas las tareas</button>
+        <ul id="taskList">
+            <!-- Aquí van las tareas -->
+        </ul>
+        <button id="logoutButton">Cerrar sesión</button>
+
+        <!-- Icono de carga -->
+        <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+            <svg width="50" height="50" viewBox="0 0 50 50">
+                <circle cx="25" cy="25" r="20" stroke="gray" stroke-width="5" fill="none" />
+                <circle cx="25" cy="25" r="20" stroke="blue" stroke-width="5" stroke-dasharray="126" stroke-dashoffset="63" fill="none" stroke-linecap="round" />
+            </svg>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Verificar si el usuario está autenticado
+        if (localStorage.getItem("loggedIn") !== "true") {
+            // Redirigir a la página de inicio de sesión si no está autenticado
+            window.location.href = "login.html";
+        }
+        
+        // Manejar el clic en el botón de cerrar sesión
+        document.getElementById("logoutButton").addEventListener("click", function() {
+            // Limpiar el estado de autenticación en localStorage
+            localStorage.removeItem("loggedIn");
+            // Redirigir a la página de inicio de sesión
+            window.location.href = "login.html";
+        });
+    </script>
+</body>
+</html>

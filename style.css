@@ -1,0 +1,177 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #c2549444;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.input-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button {
+    width: 25%;
+    padding: 10px;
+    border: none;
+    background-color: #3528a7;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: #f8f9fa;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #6c757d;
+}
+
+button.delete-button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 5px;
+    margin-left: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.delete-button:hover {
+    background-color: #c82333;
+}
+
+#clearAllButton {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#clearAllButton:hover {
+    background-color: #c82333;
+}
+
+/* Opcional: Estilos adicionales para centrar el spinner */
+.container {
+    text-align: center;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%; /* Ajusta el ancho del contenedor según tus necesidades */
+    max-height: 500px; /* Ajusta la altura máxima del contenedor según sea necesario */
+    overflow: auto; /* Muestra barras de desplazamiento cuando sea necesario */
+    margin: 20px auto; /* Centra el contenedor y agrega margen */
+    padding: 20px; /* Agrega padding si es necesario */
+    border: 1px solid #ddd; /* Agrega un borde opcional */
+}
+
+/* Estilos para los campos de entrada y botones */
+.input-container input, .input-container button {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input[type="text"], input[type="password"] {
+    font-size: 16px;
+}
+
+button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* Estilo del contenedor del spinner */
+
+.loading-spinner {
+    border: 8px solid rgba(0, 0, 0, 0.1); /* Fondo semi-transparente */
+    border-radius: 50%;
+    border-top: 8px solid #3498db; /* Color del borde superior */
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: 300px; /* Mitad de la altura */
+    margin-left: -25px; /* Mitad del ancho */
+}
+
+/* Animación del spinner */
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.completed {
+    text-decoration: line-through;
+}

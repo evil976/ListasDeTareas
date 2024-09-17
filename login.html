@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Iniciar Sesión</h1>
+        <div class="input-container">
+            <input type="text" id="username" placeholder="Nombre de usuario">
+            <input type="password" id="password" placeholder="Contraseña">
+            <button id="loginButton">Iniciar Sesión</button>
+        </div>
+        <p id="loginError" style="color: red; display: none;">Nombre de usuario o contraseña incorrectos</p>
+    </div>
+
+    <!-- Icono de carga (lo ocultaremos con CSS inicialmente) -->
+    <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+        <svg width="50" height="50" viewBox="0 0 50 50">
+            <circle cx="25" cy="25" r="20" stroke="gray" stroke-width="5" fill="none" />
+            <circle cx="25" cy="25" r="20" stroke="blue" stroke-width="5" stroke-dasharray="126" stroke-dashoffset="63" fill="none" stroke-linecap="round" />
+        </svg>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>
